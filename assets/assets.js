@@ -2,16 +2,17 @@ import hero_poster from "./hero_poster.png";
 import hero_poster_2 from "./hero_poster_2.png";
 import hero_poster_3 from "./hero_poster_3.png";
 import icon from "./icon.png";
+import side_banner from "./side_banner.png";
 import image_1 from "./image_1.jpeg";
 import image_2 from "./image_2.jpeg";
 import image_3 from "./image_3.jpeg";
 import image_4 from "./image_4.jpeg";
 import image_5 from "./image_5.jpeg";   
-import image_6 from "./image_6.jpeg";
+import image_10 from "./image_6.jpeg";
 import image_7 from "./image_7.jpeg";
 import image_8 from "./image_8.jpeg";
 import image_9 from "./image_9.jpeg";
-import image_10 from "./image_10.jpeg";
+import image_6 from "./image_10.jpeg";
 import image_11 from "./image_11.jpeg";
 import image_12 from "./image_12.jpeg";
 import image_13 from "./image_13.jpeg";
@@ -59,6 +60,7 @@ export const assets = {
   hero_poster,
   hero_poster_2,
     hero_poster_3,
+    side_banner,
     image_1,
     image_2,
     image_3,
