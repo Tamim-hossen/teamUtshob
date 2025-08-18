@@ -34,7 +34,9 @@ function Hero() {
 
   return (
     <div>
-        <Image id="scroll-to-appear" src={assets.hero_poster_3} alt='hero-section' className={`${isVisible ? 'animate-slide-up' :'opacity-0'}`}/>
+      <Image id="scroll-to-appear2" src={assets.hero_poster_mobile} alt='hero-section' className={` lg:hidden`}/>
+      <Image id="scroll-to-appear" src={assets.hero_poster_3} alt='hero-section' className={`${isVisible ? 'animate-slide-up' :'opacity-0'} hidden lg:block`}/>
+      
     </div>
   )
 }
