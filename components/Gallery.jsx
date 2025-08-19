@@ -20,7 +20,7 @@ function Story() {
     <div className='max-w-[100vw] flex flex-col justify-center items-center p-4'>
         <div className='max-w-[100vw] flex flex-col justify-center items-center'>
             <div className='w-[90%] flex flex-col justify-center items-center '>
-                <h1 className={`${kosthipathor.className} text-5xl pt-20`}>স্থিরচিত্র</h1>
+                <h1 className={`${kosthipathor.className} text-5xl pt-20`}>কিছু স্থিরচিত্র</h1>
                 <div className='w-[80vw] lg:w-[55vw] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center mt-10 '>
                     {images.map((image, index) => (
                         <div key={index} className='m-2'>

@@ -2,6 +2,7 @@ import hero_poster from "./hero_poster.png";
 import hero_poster_2 from "./hero_poster_2.png";
 import hero_poster_3 from "./hero_poster_3.png";
 import hero_poster_mobile from "./hero_poster_1_mob.png";
+import hero_poster_tab from "./hero_poster_1_tab.png";
 import icon from "./icon.png";
 import bg from "./bg-1.png";
 import side_banner from "./side_banner.png";
@@ -54,10 +55,12 @@ import image_46 from "./image_46.jpeg";
 import image_47 from "./image_47.jpeg";
 import image_48 from "./image_48.jpeg";
 import image_49 from "./image_49.jpeg";
+import image_50 from "./image_50.png"
 
 
 export const assets = {
   hero_poster_mobile,
+  hero_poster_tab,
   bg,
   icon,
   hero_poster,
@@ -113,5 +116,6 @@ export const assets = {
   image_47,
   image_48,
   image_49,
+  image_50,
 
 }
