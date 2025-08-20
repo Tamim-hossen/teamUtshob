@@ -3,6 +3,7 @@ import React from 'react'
 import Hero from '@/components/Hero.jsx';
 import Story from '@/components/Story';
 import PastEvents from '@/components/PastEvents.jsx';
+import Recognition from '@/components/Recognition.jsx';
 import Gallery from '@/components/Gallery.jsx';
 import Image from 'next/image';
 import { assets } from '@/assets/assets';
@@ -24,6 +25,7 @@ function page() {
       
       <Story />
       <PastEvents />
+      <Recognition/>
       <Gallery />
       
       <div className='w-screen flex felx-row justify-center items-center'>

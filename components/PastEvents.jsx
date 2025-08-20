@@ -2,6 +2,7 @@ import React from 'react'
 import { assets } from '@/assets/assets'
 import localFont from 'next/font/local'
 import Image from 'next/image'
+import * as motion from "motion/react-client"
 
 const kosthipathor = localFont({
     src: "../app/fonts/koshtipathor_unicode.ttf",
@@ -51,29 +52,94 @@ function PastEvents() {
         {
             name: "রোদ্দুর সমাচার",
             description: `হাসি, ভালোবাসা আর স্মৃতিতে ভরা গ্রীষ্মের সোনালী রঙ—রোদ ও ঐক্যের গান, যা টিম উৎসবের হৃদয়ে প্রাণ ঢেলে দিয়েছিল।`,
-            picture: { src: assets.image_50, alt: "event-8" },
+            picture: { src: assets.image_50, alt: "event-8  " },
         }]
 
     return (
-        <div className='max-w-[100vw] flex flex-col justify-center items-center p-4'>
-            <p className={`${kosthipathor.className} text-5xl`}>আমাদের উৎসব</p>
-            <p className={`${kosthipathor.className} text-2xl py-5 text-underline text-center`}>যেখানে গান, কবিতা আর রঙ মিলে তৈরি হয় আমাদের আপন পৃথিবী</p>
-            {events.map((event, index) => (
-                <div className='w-[70vw] flex flex-row justify-center items-center border-b-1 border-gray-400 py-15 gap-10' key={index}>
-                    <div className={`w-[40%] flex flex-col justify-center items-start ${index % 2 === 0 ? 'hidden' : 'block'}`}>
-                        <Image src={event.picture.src} alt={event.picture.alt} className='w-80 h-80' />
-                    </div>
-                    <div className='w-[40%] flex flex-col justify-center items-center '>
-                        <h1 className={`${kosthipathor.className} text-4xl  text-start w-full`}>{event.name}</h1>
-                        <h3 className={`${kosthipathor.className} text-2xl pt-5 w-full`}>{event.description}</h3>
-                    </div>
-                    <div className={`w-[40%] flex flex-col justify-center items-end ${index % 2 === 0 ? 'block' : 'hidden'}`}>
-                        <Image src={event.picture.src} alt={event.picture.alt} className='w-80 h-80' />
-                    </div>
-                </div>
-            ))}
-        </div>
+        <div className="max-w-[100vw] flex flex-col justify-center items-center p-4">
+      <p className={`${kosthipathor.className} text-5xl`}>আমাদের উৎসব</p>
+      <p className={`${kosthipathor.className} text-2xl py-5 underline text-center`}>
+        যেখানে গান, কবিতা আর রঙ মিলে তৈরি হয় আমাদের আপন পৃথিবী
+      </p>
+
+      {events.map((event, index) => (
+        <motion.div
+          key={index}
+          className="w-[70vw] flex flex-col lg:flex-row justify-center items-center border-b border-gray-400 py-15 gap-10"
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ amount: 0.1, once: true }}
+          variants={containerVariants}
+        >
+          <motion.div
+            className={`w-[90%] lg:w-[40%] flex justify-start items-start ${
+              index % 2 === 0 ? "hidden" : "hidden lg:block"
+            }`}
+            variants={imageVariants}
+          >
+            <Image
+              src={event.picture.src}
+              alt={event.picture.alt}
+              className="w-80 h-80 rounded-xl shadow-lg object-cover"
+            />
+          </motion.div>
+          <motion.div
+            className="w-[90%] lg:w-[40%] flex flex-col justify-center items-center lg:items-start "
+            variants={textVariants}
+          >
+            <h1 className={`${kosthipathor.className} text-2xl  md:text-4xl w-full text-center lg:text-left`}>
+              {event.name}
+            </h1>
+            <h3 className={`${kosthipathor.className} text-lg md:text-2xl pt-5 w-full leading-relaxed text-justify lg:text-left`}>
+              {event.description}
+            </h3>
+          </motion.div>
+
+          <motion.div
+            className={`w-[90%] lg:w-[40%] flex justify-center items-end ${
+              index % 2 === 0 ? "block" : "block lg:hidden"
+            }`}
+            variants={imageVariants}
+          >
+            <Image
+              src={event.picture.src}
+              alt={event.picture.alt}
+              className="lg:w-80 lg:h-80 w-full h-full rounded-xl shadow-lg object-cover"
+            />
+          </motion.div>
+        </motion.div>
+      ))}
+    </div>
     )
 }
+
+const containerVariants = {
+  offscreen: { opacity: 0, y: 100 },
+  onscreen: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", bounce: 0.3, duration: 1 },
+  },
+}
+
+const imageVariants = {
+  offscreen: { opacity: 0, scale: 0.8, rotate: -10 },
+  onscreen: {
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: { type: "spring", bounce: 0.4, duration: 0.8 },
+  },
+}
+
+const textVariants = {
+  offscreen: { opacity: 0, x: -50 },
+  onscreen: {
+    opacity: 1,
+    x: 0,
+    transition: { type: "tween", duration: 0.6, ease: "easeOut" },
+  },
+}
+
 
 export default PastEvents
