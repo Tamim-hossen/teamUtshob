@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import localFont from 'next/font/local';
 import { assets } from '@/assets/assets';
 import Image from 'next/image';
+import { useLanguageStore } from '@/app/store/UseLanguageStore';
 
 const kosthipathor = localFont({
   src: "../app/fonts/koshtipathor_unicode.ttf",
@@ -11,6 +12,7 @@ const kosthipathor = localFont({
 });
 
 export default function Story() {
+  const {selectedLanguage} = useLanguageStore()
   const numbers = 24;
   const images = Array.from({ length: numbers }, (_, index) => ({
     src: assets[`image_${index + 1}`],
@@ -47,7 +49,8 @@ export default function Story() {
     <div className='max-w-[100vw] flex flex-col justify-center items-center p-4'>
       <div className='max-w-[100vw] flex flex-col justify-center items-center'>
         <div className='w-[90%] flex flex-col justify-center items-center '>
-          <h1 className={`${kosthipathor.className} text-5xl pt-20`}>কিছু স্থিরচিত্র</h1>
+          <h1 className={`${kosthipathor.className} text-5xl pt-20 ${selectedLanguage === 'Bangla' ? 'block':'hidden'}`}>কিছু স্থিরচিত্র</h1>
+          <h1 className={`${kosthipathor.className} text-5xl pt-20 ${selectedLanguage === 'Bangla' ? 'hidden':'block'}`}>Gallery</h1>
           <div className='w-[80vw] lg:w-[55vw] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center mt-10'>
             {images.map((image, index) => (
               <div

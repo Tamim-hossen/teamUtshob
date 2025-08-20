@@ -1,5 +1,5 @@
+'use client'
 import React from 'react'
-
 import Hero from '@/components/Hero.jsx';
 import Story from '@/components/Story';
 import PastEvents from '@/components/PastEvents.jsx';
@@ -8,6 +8,7 @@ import Gallery from '@/components/Gallery.jsx';
 import Image from 'next/image';
 import { assets } from '@/assets/assets';
 import localfont from 'next/font/local';
+import { useLanguageStore } from './store/UseLanguageStore';
 
 
 const kosthipathor = localfont({
@@ -15,18 +16,28 @@ const kosthipathor = localfont({
   weight: "400",
   variable: "--font-koshtipathor",
 })
-
+const serene = localfont({
+  src : "../app/fonts/serene.ttf",
+  weight:"400",
+  variable : "--font-serene"
+})
 function page() {
+
+  const {selectedLanguage, setLang} = useLanguageStore()
   return (
     <div className={` pb-10 overflow-x-hidden`}>
       <Image src={assets.side_banner} alt='side-banner' className='fixed top-0 right-0 h-30 w-30 md:w-40 md:h-40 lg:w-50 lg:h-50 z-10' />
       <Image src={assets.side_banner} alt='side-banner' className='fixed top-0 left-0 h-30 w-30 md:w-40 md:h-40 lg:w-50 lg:h-50 z-10 rotate-[270deg]' />
       <Hero />
-      
       <Story />
       <PastEvents />
       <Recognition/>
       <Gallery />
+      <div className='absolute top-2 right-4 z-50 flex flex-row justify-center items-start gap-2 md:gap-3'>
+        <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('Bangla')}}>বাং</p>
+        <div className='w-[2px] h-6 bg-gray-600 mt-[1px] md:mt-[3px]'/>
+        <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('English')}}>EN</p>
+      </div>
       
       <div className='w-screen flex felx-row justify-center items-center'>
         <div className='flex flex-col lg:flex-row justify-between items-center p-4 max-w-[60%] gap-5 lg:gap-20'>
@@ -35,7 +46,8 @@ function page() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
             </svg>
-            <p className={`${kosthipathor.className} text-xl`}>বাংলাদেশ কৃষি বিশ্বিদ্যালয়</p>
+            <p className={`${kosthipathor.className} text-xl ${selectedLanguage === 'Bangla' ? 'block' : 'hidden'}`}>বাংলাদেশ কৃষি বিশ্বিদ্যালয়</p>
+            <p className={`${kosthipathor.className} text-xl ${selectedLanguage === 'Bangla' ? 'hidden' : 'block'}`}>Bangladeh Agriculture University</p>
           </div>
           <div className='flex flex-row justify-center items-center gap-2'>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">

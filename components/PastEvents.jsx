@@ -1,8 +1,12 @@
+'use client'
 import React from 'react'
-import { assets } from '@/assets/assets'
 import localFont from 'next/font/local'
 import Image from 'next/image'
 import * as motion from "motion/react-client"
+import Link from 'next/link'
+import { useAppContextBN } from '@/context/AppcontextBN'
+import { useAppContextEN } from '@/context/AppcontextEN'
+import { useLanguageStore } from '@/app/store/UseLanguageStore'
 
 const kosthipathor = localFont({
     src: "../app/fonts/koshtipathor_unicode.ttf",
@@ -11,60 +15,32 @@ const kosthipathor = localFont({
 })
 
 function PastEvents() {
+  const {selectedLanguage} = useLanguageStore()
+  const {eventsbn} = useAppContextBN()
+  const {eventsen} = useAppContextEN()
+  let events = []
+  if (selectedLanguage === 'Bangla'){
+    events = eventsbn
+  }
+  else {
+    events = eventsen
+  }
 
-
-    const events = [
-        {
-            name: "এক কাপ চা",
-            description: "'এক কাপ চা' দিয়েই শুরু হয়েছিল আমাদের যাত্রা। চায়ের উষ্ণ আড্ডাকে কেন্দ্র করে একটি ভিন্নধর্মী আয়োজন আমাদের প্রথম অনুষ্ঠানকে জন্ম দিয়েছিল।",
-            picture: { src: assets.image_31, alt: "event-1" },
-        },
-        {
-            name: "অনন্ত নক্ষত্রবীথি ও একজন হুমায়ূন",
-            description: `এটি ছিল আমাদের আয়োজিত একটি অনলাইন ইভেন্ট, যার লক্ষ্য ছিল হুমায়ূন আহমেদের প্রতি আমাদের ভালোবাসা ও শ্রদ্ধা প্রকাশ করা। আমরা একটি প্রতিযোগিতার আয়োজন করি, যেখানে হুমায়ূন ভক্তরা তাঁদের অনুভূতি সৃজনশীলতার মাধ্যমে প্রকাশ করেছেন। দেশের নানা প্রান্ত থেকে ১,৩০,০০০-এরও বেশি তরুণ অংশগ্রহণ করেন কসপ্লে, ফটোগ্রাফি ও সাহিত্যসহ বিভিন্ন বিভাগে, যা ইভেন্টটিকে করে তোলে সত্যিই অনন্য।`,
-            picture: { src: assets.image_43, alt: "event-2" },
-        },
-        {
-            name: "উৎসবে বসন্ত",
-            description: `শীতের শুষ্কতা কাটিয়ে উষ্ণ রোদ, প্রকৃতি আর জীবনের রঙকে নতুন করে বরণ করতে, টিম উৎসব ১১ মার্চ ২০২২-এ আয়োজন করে “উৎসবে বসন্ত”। এদিন BAU-এর উৎসবপ্রেমী তরুণরা রঙিন পোশাকে বসন্তকে স্বাগত জানায়। প্রাণের এই উৎসবে স্থানীয় কিছু ব্যান্ডও তাদের মনোমুগ্ধকর সুরে সবাইকে মুগ্ধ করে তোলে, যা দিনটিকে করে তোলে আরও আনন্দময় ও উচ্ছ্বাসভরা।`,
-            picture: { src: assets.image_44, alt: "event-3" },
-        },
-        {
-            name: "শ্রাবনের আমন্ত্রণে",
-            description: `বর্ষাকালকে স্বাগত জানাতে আমরা আয়োজন করেছিলাম এক বর্ণাঢ্য অনুষ্ঠান। দিনভর চলেছিল গান পরিবেশনা, কবিতা আবৃত্তি, বৃষ্টিকে ঘিরে সৃজনশীল সাজসজ্জা, খিচুড়ি-পাকোড়াসহ নানা মুখরোচক খাবারের আসর এবং আরও অনেক আয়োজন। নারী অংশগ্রহণকারীরা আকাশী নীল শাড়িতে সেজে উঠেছিলেন, যেন প্রকৃতির সজীব রূপের প্রতিচ্ছবি। একই সঙ্গে, আমরা শ্রদ্ধার সঙ্গে স্মরণ করেছি আমাদের বিশ্বকবি রবীন্দ্রনাথ ঠাকুরকে, কারণ দিনটি ছিল তাঁর মৃত্যুবার্ষিকী।`,
-            picture: { src: assets.image_49, alt: "event-4" },
-        },
-        {
-            name: "নবরূপে নবান্ন",
-            description: `“নবরূপে নবান্ন” ছিল আমাদের সবচেয়ে বড় অনুষ্ঠান। যেহেতু আমাদের শিক্ষা কৃষিভিত্তিক, তাই আমরা লক্ষ্য করেছি যে এই নবান্ন অনুষ্ঠানটি বাংলাদেশ কৃষি বিশ্ববিদ্যালয়ের একটি স্বাক্ষর অনুষ্ঠান হিসেবে পরিচিতি পাবে। দুইদিনব্যাপী এই আয়োজনের প্রতিটি মুহূর্তে বিপুল সংখ্যক দর্শক আমাদের সঙ্গে মিলিত হয়ে উদযাপনে অংশগ্রহণ করেছিলেন।`,
-            picture: { src: assets.image_46, alt: "event-5" },
-        },
-        {
-            name: "আন্তর্জাতিক আন্তঃবিশ্ববিদ্যালয় স্বল্পদৈর্ঘ্য চলচ্চিত্র উৎসব-IIUSFF-ক্যাম্পাস স্ক্রিনিং",
-            description: `ঢাকা বিশ্ববিদ্যালয় চলচ্চিত্র সমিতি আয়োজন করেছে এই অনুষ্ঠান, আর টিম উৎসব ছিল সেই স্বপ্নময় মুহূর্তের ক্যাম্পাসের সঙ্গী।`,
-            picture: { src: assets.image_37, alt: "event-6" },
-        },
-        {
-            name: "আরো এক কাপ চা",
-            description: `“আরো এক কাপ চা” আমাদের হৃদয়ের প্রিয় মুহূর্ত। জীবনের ক্লান্তি মুছে দেয় চায়ের এক গরম চুমুকের মতো এই অনুষ্ঠান। এখানে প্রতিটি চুমুকে মিশে থাকে হাসি, গল্প এবং বন্ধুত্বের উষ্ণতা। নানা চায়ের দোকান, মনোমুগ্ধকর পরিবেশ—সব মিলিয়ে এটি হয়ে ওঠে আমাদের জন্য স্বস্তি, আনন্দ ও একরাশ ভালোবাসার প্রতীক।`,
-            picture: { src: assets.image_47, alt: "event-7" },
-        },
-        {
-            name: "রোদ্দুর সমাচার",
-            description: `হাসি, ভালোবাসা আর স্মৃতিতে ভরা গ্রীষ্মের সোনালী রঙ—রোদ ও ঐক্যের গান, যা টিম উৎসবের হৃদয়ে প্রাণ ঢেলে দিয়েছিল।`,
-            picture: { src: assets.image_50, alt: "event-8  " },
-        }]
 
     return (
         <div className="max-w-[100vw] flex flex-col justify-center items-center p-4">
-      <p className={`${kosthipathor.className} text-5xl`}>আমাদের উৎসব</p>
-      <p className={`${kosthipathor.className} text-2xl py-5 underline text-center`}>
+      <p className={`${kosthipathor.className} text-5xl ${selectedLanguage === 'Bangla' ? 'block' : 'hidden'}`}>আমাদের উৎসব</p>
+      <p className={`${kosthipathor.className} text-5xl ${selectedLanguage === 'Bangla' ? 'hidden' : 'block'}`}>Past Events</p>
+      <p className={`${kosthipathor.className} text-2xl py-5 underline text-center ${selectedLanguage === 'Bangla' ? 'block' : 'hidden'}`}>
         যেখানে গান, কবিতা আর রঙ মিলে তৈরি হয় আমাদের আপন পৃথিবী
+      </p>
+      <p className={`${kosthipathor.className} text-2xl py-5 underline text-center ${selectedLanguage === 'Bangla' ? 'hidden' : 'block'}`}>
+        Where music, poetry, and colors come together to create our own world.
       </p>
 
       {events.map((event, index) => (
+        <Link href={`/event/${event.id}`} className="w-full flex flex-col lg:flex-row justify-center items-center" key={index}>
         <motion.div
-          key={index}
           className="w-[70vw] flex flex-col lg:flex-row justify-center items-center border-b border-gray-400 py-15 gap-10"
           initial="offscreen"
           whileInView="onscreen"
@@ -107,7 +83,7 @@ function PastEvents() {
               className="lg:w-80 lg:h-80 w-full h-full rounded-xl shadow-lg object-cover"
             />
           </motion.div>
-        </motion.div>
+        </motion.div></Link>
       ))}
     </div>
     )

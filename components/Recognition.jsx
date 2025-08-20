@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import localFont from 'next/font/local'
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
+import { useLanguageStore } from '@/app/store/UseLanguageStore'
 
 const kosthipathor = localFont({
   src: "../app/fonts/koshtipathor_unicode.ttf",
@@ -16,6 +17,7 @@ export default function Recognition() {
   const sectionRef = useRef(null)
   const [visibleItems, setVisibleItems] = useState({})
   const containerRefs = useRef([])
+  const {selectedLanguage} = useLanguageStore()
 
   useEffect(() => {
     const sectionObserver = new IntersectionObserver(
@@ -58,11 +60,16 @@ export default function Recognition() {
     >
       <div className='w-[100vw] flex flex-col justify-center items-center'>
         <div className='w-[80%] flex flex-col justify-center items-center'>
-          <h1 className={`${kosthipathor.className} text-5xl md:text-7xl pt-20`}>স্বীকৃতি</h1>
+          <h1 className={`${kosthipathor.className} text-5xl md:text-7xl pt-20 ${selectedLanguage === 'Bangla' ? 'block':'hidden'}`}>স্বীকৃতি</h1>
+          <h1 className={`${kosthipathor.className} text-5xl md:text-7xl pt-20 ${selectedLanguage === 'Bangla' ? 'hidden':'block'}`}>Recognition</h1>
         </div>
-        <p className={`${kosthipathor.className} text-xl md:text-2xl text-center py-5 w-[80%]`}>
+        <p className={`${kosthipathor.className} text-xl md:text-2xl text-center py-5 w-[80%] ${selectedLanguage === 'Bangla' ? 'block':'hidden'}`}>
           আমাদের ছোট উদ্যোগগুলো ধীরে ধীরে স্থানীয় ও জাতীয় স্তরে স্বীকৃতি পেয়েছে।<br />
           প্রতিটি প্রশংসা আমাদের নতুন উদ্যম জাগায়, আর আনন্দ দেয় জানাতে যে আমাদের কাজ আরও অনেকের কাছে পৌঁছেছে।
+        </p>
+        <p className={`${kosthipathor.className} text-xl md:text-2xl text-center py-5 w-[80%] ${selectedLanguage === 'Bangla' ? 'hidden':'block'}`}>
+          Our small initiatives have gradually gained recognition at both local and national levels.<br />
+          Every compliment fuels our renewed energy and brings us joy, knowing that our work has reached even more people.
         </p>
       </div>
 
