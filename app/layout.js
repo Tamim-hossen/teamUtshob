@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='bg-[url("../assets/bg-1.png")] bg-cover bg-no-repeat relative bg-center bg-fixed bg-black/40 bg-blend-multiply' style={{backgroundColor: "rgba(255,254,230,0.7)"}}>
+    <html lang="en" className='bg-[url("../assets/bg-1.png")] bg-cover bg-no-repeat bg-center bg-fixed bg-black/40 bg-blend-multiply' style={{backgroundColor: "rgba(255,254,230,0.7)"}}>
       <body
         className={` antialiased `}
       >
