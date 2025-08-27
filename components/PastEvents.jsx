@@ -44,7 +44,7 @@ function PastEvents() {
           className="w-[70vw] flex flex-col lg:flex-row justify-center items-center border-b border-gray-400 py-15 gap-10"
           initial="offscreen"
           whileInView="onscreen"
-          viewport={{ amount: 0.5, once: true }}
+          viewport={{ amount: 0.2, once: false }}
           variants={containerVariants}
         >
           <motion.div
@@ -90,25 +90,25 @@ function PastEvents() {
 }
 
 const containerVariants = {
-  offscreen: { opacity: 0 },
+  offscreen: { opacity: 0, scale: 0.8  },
   onscreen: {
     opacity: 1,
+    scale :1 ,
     transition: { type: "tween", duration: 0.5 },
   },
 }
 
 const imageVariants = {
-  offscreen: { opacity: 0, scale: 0.8 },
+  offscreen: { opacity: 0 },
   onscreen: {
     opacity: 1,
-    scale: 1,
     rotate: 0,
     transition: { type: "tween", duration: 0.5 },
   },
 }
 
 const textVariants = {
-  offscreen: { opacity: 0, scale: 0.8 },
+  offscreen: { opacity: 0},
   onscreen: {
     opacity: 1,
     scale: 1,
