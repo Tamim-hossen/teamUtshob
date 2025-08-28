@@ -2,6 +2,7 @@
 import "./globals.css";
 import LayoutWrapper from "@/components/LayoutWrapper";
 import { assets } from "@/assets/assets";
+import GooCursor from "@/components/CursorCompenent";
 
 export const metadata = {
   title: "টিম উৎসব",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
       <body
         className={` antialiased `}
       >
+        <GooCursor/>
         <LayoutWrapper>
                   {children}
         </LayoutWrapper>
