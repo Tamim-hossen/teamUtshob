@@ -34,9 +34,14 @@ function page() {
       <Recognition/>
       <Gallery />
       <div className='absolute top-2 right-4 z-50 flex flex-row justify-center items-start gap-2 md:gap-3'>
-        <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('Bangla')}}>বাং</p>
+         <label class="relative inline-flex items-center cursor-pointer">
+    <input type="checkbox" value="" class="sr-only peer" onClick={()=>{setLang(selectedLanguage === 'Bangla' ? 'English' : 'Bangla')}}/>
+    <div class="w-13 h-8 bg-gray-200 rounded-full peer peer-checked:bg-gray-200 transition-colors opacity-50"></div>
+    <div class={` ${kosthipathor.className} absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition-transform ${selectedLanguage === 'Bangla' ? '' : 'translate-x-5'} flex items-center justify-center`}>{selectedLanguage === 'Bangla' ? 'বা' : 'En'}</div>
+  </label>
+        {/* <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('Bangla')}}>বাং</p>
         <div className='w-[2px] h-6 bg-gray-600 mt-[1px] md:mt-[3px]'/>
-        <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('English')}}>EN</p>
+        <p className={`${kosthipathor.className} text-md md:text-xl cursor-pointer hover:scale-105 active:scale-90`} onClick={()=>{setLang('English')}}>EN</p> */}
       </div>
       
       <div className='w-screen flex felx-row justify-center items-center'>
