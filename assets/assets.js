@@ -57,6 +57,9 @@ import image_48 from "./image_48.jpeg";
 import image_49 from "./image_49.jpeg";
 import image_50 from "./image_50.png"
 import image_51 from "./image_51.png"
+import image_52 from "./image_52.png"
+import image_53 from "./image_53.png"
+import image_54 from "./image_54.png"
 
 
 export const assets = {
@@ -118,5 +121,9 @@ export const assets = {
   image_48,
   image_49,
   image_50,
-  image_51
+  image_51,
+  image_52,
+  image_53,
+  image_54,
+
 }
